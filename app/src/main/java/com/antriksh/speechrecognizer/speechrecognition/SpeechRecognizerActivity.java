@@ -46,8 +46,7 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
         speechRecognizer.setRecognitionListener(new RecognitionListenerImpl(this));
 
         // listener
-        Button button = (Button) findViewById(R.id.start_recognize);
-        button.setOnClickListener(new View.OnClickListener() {
+        ((Button) findViewById(R.id.start_recognize)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startRecognizeSpeech();
@@ -181,7 +180,8 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
             subStatus.setText("");
             Log.v(TAG, "on results");
 
-            ArrayList<String> results = data.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            ArrayList<String> results =
+                    data.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 
             for (String s : results) {
                 result.append(s + "\n");
