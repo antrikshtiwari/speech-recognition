@@ -23,9 +23,11 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
     private static final String TAG = "SpeechRecognizerActivity";
     private SpeechRecognizer speechRecognizer;
     private final int PERMISSION_AUDIO = 1000;
-    private TextView status,subStatus,result;
+    private TextView status, subStatus, result;
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,7 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
             findViewById(R.id.start_recognize).setEnabled(true);
             subStatus.setText("");
             status.setText("");
-        }else{
+        } else {
             Toast.makeText(this, "Audio Permission Required", Toast.LENGTH_SHORT).show();
         }
     }
@@ -72,8 +74,8 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
         Intent intent = RecognizerIntent.getVoiceDetailsIntent(getApplicationContext());
         speechRecognizer.startListening(intent);
 
-        ((TextView)findViewById(R.id.status)).setText("");
-        ((TextView)findViewById(R.id.sub_status)).setText("");
+        ((TextView) findViewById(R.id.status)).setText("");
+        ((TextView) findViewById(R.id.sub_status)).setText("");
         findViewById(R.id.start_recognize).setEnabled(false);
     }
 
@@ -89,14 +91,14 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
         @Override
         public void onReadyForSpeech(Bundle params) {
             status.setText("Ready for speech");
-            Log.d(TAG,"On Ready");
+            Log.d(TAG, "On Ready");
         }
 
         @Override
         public void onBeginningOfSpeech() {
             status.setText("Beginning of speech");
             result.setText("");
-            Log.d(TAG,"beginning of speech");
+            Log.d(TAG, "beginning of speech");
         }
 
         @Override
@@ -112,7 +114,7 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
         public void onEndOfSpeech() {
             status.setText("End of speech");
             subStatus.setText("Processing...");
-            Log.v(TAG,"end of speech");
+            Log.v(TAG, "end of speech");
             findViewById(R.id.start_recognize).setEnabled(true);
         }
 
@@ -121,7 +123,7 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
             findViewById(R.id.start_recognize).setEnabled(true);
             status.setText("Current status: Error");
             subStatus.setText("");
-            Log.v(TAG,"on error");
+            Log.v(TAG, "on error");
             switch (error) {
                 case SpeechRecognizer.ERROR_AUDIO:
 
@@ -170,14 +172,14 @@ public class SpeechRecognizerActivity extends AppCompatActivity {
         @Override
         public void onPartialResults(Bundle partialResults) {
             status.setText("Partial results");
-            Log.v(TAG,"on results");
+            Log.v(TAG, "on results");
         }
 
         @Override
         public void onResults(Bundle data) {
             status.setText("Results: ");
             subStatus.setText("");
-            Log.v(TAG,"on results");
+            Log.v(TAG, "on results");
 
             ArrayList<String> results = data.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 
