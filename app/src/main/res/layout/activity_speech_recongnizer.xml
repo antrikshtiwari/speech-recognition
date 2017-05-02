@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/start_recognize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_recognize" />
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/sub_status"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <ScrollView
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+        <TextView
+            android:id="@+id/result"
+            android:inputType="textMultiLine"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"/>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Speech Recognition</string>
+    <string name="start_recognize">Start listening</string>
+</resources>
